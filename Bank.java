@@ -93,3 +93,20 @@ public class Bank {
         C.displayBalance();
     }
 }
+
+
+
+OUTPUT:
+Interest added: $500.0
+Deposited: $1000.0
+Account Balance: $11500.0
+Withdrew: $500.0
+Account Balance: $11000.0
+
+Deposited: $2000.0
+Account Balance: $5000.0
+Withdrew: $2000.0
+Withdrew: $2500.0
+Service charge imposed: $50.0
+Account Balance: $450.0
+
