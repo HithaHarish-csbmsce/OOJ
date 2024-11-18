@@ -3,81 +3,125 @@ package CIE;
 import java.util.Scanner;
 
 public class Student {
-    public String USN;
-    public String Name;
-    public int sem;
-    public int[] Marks = new int[5];
+    protected String usn;
+    protected String name;
+    protected int sem;
 
-    // Constructor to initialize student details
-    public Student(String USN, String Name, int sem) {
-        this.USN = USN;
-        this.Name = Name;
-        this.sem = sem;
+    // Method to input student details
+    public void inputStudentDetails() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter USN: ");
+        usn = s.nextLine();
+        System.out.println("Enter Name: ");
+        name = s.nextLine();
+        System.out.println("Enter Semester: ");
+        sem = s.nextInt();
+    }
+
+    // Method to display student details
+    public void displayStudentDetails() {
+        System.out.println("USN: " + usn);
+        System.out.println("Name: " + name);
+        System.out.println("Semester: " + sem);
     }
 }
-package SEE;
+
+package CIE;
 
 import java.util.Scanner;
 
-public class External extends CIE.Student {
-    public int[] externalMarks = new int[5];
+public class Internals extends Student {
+    protected int[] marks = new int[5]; // Array to store internal marks for 5 courses
 
-    public External(String USN, String Name, int sem) {
-        super(USN, Name, sem);
+    // Method to input internal marks for five courses
+    public void inputCIEmarks() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter Internal Marks for 5 Courses: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter marks for course " + (i + 1) + ": ");
+            marks[i] = s.nextInt();
+        }
     }
 
-    // Method to input external marks
-    public void setMarks() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the external marks of 5 subjects:");
+    // Method to display internal marks
+    public void displayCIEmarks() {
+        System.out.println("Internal Marks: ");
         for (int i = 0; i < 5; i++) {
-            externalMarks[i] = input.nextInt();
+            System.out.println("Course " + (i + 1) + ": " + marks[i]);
         }
     }
 }
-import CIE.Student;
+
+package SEE;
+
+import CIE.Internals;
+import java.util.Scanner;
+
+public class External extends Internals {
+    protected int[] externalMarks = new int[5]; // Array to store external marks for 5 courses
+    protected int[] finalMarks = new int[5]; // Array to store final marks (internal + external)
+
+    // Method to input external marks for five courses
+    public void inputSEEmarks() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter External Marks for 5 Courses: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter marks for course " + (i + 1) + ": ");
+            externalMarks[i] = s.nextInt();
+        }
+    }
+
+    // Method to calculate final marks (internal + external)
+    public void calculateFinalMarks() {
+        for (int i = 0; i < 5; i++) {
+            finalMarks[i] = marks[i] + externalMarks[i]; // Adding internal and external marks
+        }
+    }
+
+    // Method to display final marks along with student details
+    public void displayFinalMarks() {
+        displayStudentDetails(); // Display student details
+        displayCIEmarks(); // Display internal marks
+        System.out.println("External Marks: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Course " + (i + 1) + ": " + externalMarks[i]);
+        }
+        System.out.println("Final Marks: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Course " + (i + 1) + ": " + finalMarks[i]);
+        }
+    }
+}
+
+
 import SEE.External;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the number of students:");
-        int n = input.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of students: ");
+        int n = sc.nextInt();
+        sc.nextLine(); // Consume the newline character
 
+        // Array to store External objects
         External[] students = new External[n];
 
         // Input details for each student
         for (int i = 0; i < n; i++) {
-            System.out.println("Enter USN, Name, and Semester:");
-            String USN = input.next();
-            String Name = input.next();
-            int sem = input.nextInt();
-
-            students[i] = new External(USN, Name, sem);
-
-            // Input internal marks
-            System.out.println("Enter the internal marks of 5 subjects:");
-            for (int j = 0; j < 5; j++) {
-                students[i].Marks[j] = input.nextInt();
-            }
-
-            // Input external marks
-            students[i].setMarks();
+            students[i] = new External();
+            System.out.println("Enter details for student " + (i + 1));
+            students[i].inputStudentDetails();
+            students[i].inputCIEmarks();
+            students[i].inputSEEmarks();
         }
 
         // Calculate and display final marks for each student
         for (int i = 0; i < n; i++) {
-            System.out.println("\nStudent Details:");
-            System.out.println("USN: " + students[i].USN);
-            System.out.println("Name: " + students[i].Name);
-            System.out.println("Semester: " + students[i].sem);
-
-            System.out.println("Final Marks (Internal + External):");
-            for (int j = 0; j < 5; j++) {
-                int finalMark = students[i].Marks[j] + students[i].externalMarks[j];
-                System.out.println("Subject " + (j + 1) + ": " + finalMark);
-            }
+            students[i].calculateFinalMarks();
+            students[i].displayFinalMarks();
         }
+
+        sc.close();
     }
 }
