@@ -1,0 +1,48 @@
+import java.util.*;
+interface Polygon{
+    void getPerimeter();
+    public abstract void getArea();
+}
+class Shape implements Polygon{
+    int n;
+    Shape(int n){
+        this.n=n;
+    }
+    public void getPerimeter(){
+        int P=0;
+        Scanner input = new Scanner(System.in);
+        for (int i=0; i<n; i++){
+            System.out.println("Enter the length of the side:");
+            int l=input.nextInt();
+            P+=l;
+        }
+        System.out.println("The Perimeter is:"+P);
+    }
+    public void getArea(){
+        System.out.println("Area is implemented");
+    }
+}
+public class Main2{
+    public static void main(String args[]){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the no. of sides:");
+        int n=input.nextInt();
+        Polygon S= new Shape(n);
+        S.getPerimeter();
+        S.getArea();
+
+    }
+
+}
+
+OUTPUT:
+Enter the no. of sides:
+3
+Enter the length of the side:
+2
+Enter the length of the side:
+2
+Enter the length of the side:
+3
+The Perimeter is:7
+Area is implemented
