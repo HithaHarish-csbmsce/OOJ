@@ -1,0 +1,41 @@
+PRGRM1
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 5;
+        int sum = num1 + num2;
+        int difference = num1 - num2;
+        System.out.println("Sum of " + num1 + " and " + num2 + " is: " + sum);
+        System.out.println("Difference between " + num1 + " and " + num2 + " is: " + difference);
+    }
+}
+OUTPUT
+Sum of 10 and 5 is: 15
+Difference between 10 and 5 is: 5
+
+
+PRGRM2
+import java.util.Scanner;
+public class Calculator {
+    public static void main(String[] args) { 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();      
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble(); 
+        double product = num1 * num2;
+        double quotient = 0.0;
+        if (num2 != 0) {
+            quotient = num1 / num2;
+            System.out.println("Division result: " + quotient);
+        } else {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+        System.out.println("Product (multiplication) of " + num1 + " and " + num2 + " is: " + product);
+    }
+}
+Enter the first number: 10
+Enter the second number: 5
+Product (multiplication) of 10.0 and 5.0 is: 50.0
+Division result: 2.0
+
