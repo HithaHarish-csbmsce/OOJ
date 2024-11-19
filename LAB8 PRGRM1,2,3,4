@@ -1,0 +1,27 @@
+PROGRAM1
+C:\Users\Admin\Desktop>javac Demo.java
+
+C:\Users\Admin\Desktop>java Demo
+implementation of method1
+
+PROGRAM2
+C:\Users\Admin\Desktop>javac Dog.java
+
+C:\Users\Admin\Desktop>java Dog
+Dog Barks
+Dog eats bones
+
+PROGRAM3
+C:\Users\Admin\Desktop>javac Main.java
+
+C:\Users\Admin\Desktop>java Main
+Sedan is starting
+Sedan is driving
+
+PROGRAM4
+
+C:\Users\Admin\Desktop>javac Main1.java
+
+C:\Users\Admin\Desktop>java Main1
+Printing Document
+Showing Document Preview
