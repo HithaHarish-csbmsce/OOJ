@@ -1,0 +1,206 @@
+PRGM1 
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    // Ask the user to input a number
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    // Check if the number is even or odd using the modulus operator
+    if (num % 2 == 0) {
+        printf("%d is even.\n", num); // If remainder is 0, it's even
+    } else {
+        printf("%d is odd.\n", num);  // Otherwise, it's odd
+    }
+
+    return 0;
+}
+OUTPUT
+Enter an integer: 7
+7 is odd.
+
+Enter an integer: 12
+12 is even.
+
+
+PRGRM2
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    // Ask the user to input a number
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    // Check if the number is odd
+    if (num % 2 != 0) {
+        int square = num * num;  // Calculate the square of the odd number
+        printf("The square of %d is %d.\n", num, square);
+
+        // Check if the square is odd or even
+        if (square % 2 == 0) {
+            printf("The square of %d is even.\n", num);
+        } else {
+            printf("The square of %d is odd.\n", num);
+        }
+    } else {
+        printf("%d is not an odd number.\n", num);
+    }
+
+    return 0;
+}
+OUTPUT
+Enter an integer: 5
+The square of 5 is 25.
+The square of 5 is odd.
+
+Enter an integer: 3
+The square of 3 is 9.
+The square of 3 is odd.
+
+Enter an integer: 4
+4 is not an odd number.
+
+
+PRGRM3
+#include <stdio.h>
+
+int main() {
+    int numerator, denominator;
+
+    // Get user input
+    printf("Enter numerator: ");
+    scanf("%d", &numerator);
+    printf("Enter denominator: ");
+    scanf("%d", &denominator);
+
+    // Check if the denominator is zero before dividing
+    if (denominator == 0) {
+        printf("Error: Division by zero is not allowed!\n");
+    } else {
+        int result = numerator / denominator;
+        printf("Result: %d / %d = %d\n", numerator, denominator, result);
+    }
+
+    return 0;
+}
+OUTPUT
+Enter numerator: 10
+Enter denominator: 2
+Result: 10 / 2 = 5
+Enter numerator: 10
+Enter denominator: 0
+Error: Division by zero is not allowed!
+
+
+PRGRM4
+
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    // 1. Check if the number is even or odd using if-else
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // If-else to check even or odd
+    if (num % 2 == 0) {
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    // 2. While loop to print all numbers up to the given number in ascending order
+    printf("Numbers from 1 to %d in ascending order:\n", num);
+    int i = 1;
+    while (i <= num) {
+        printf("%d ", i);
+        i++;
+    }
+    printf("\n");
+
+    // 3. Do-while loop to print all numbers down to 0 in descending order
+    printf("Numbers from %d down to 0 in descending order:\n", num);
+    int j = num;
+    do {
+        printf("%d ", j);
+        j--;
+    } while (j >= 0);
+    printf("\n");
+
+    return 0;
+}
+OUTPUT
+Enter a number: 5
+5 is odd.
+Numbers from 1 to 5 in ascending order:
+1 2 3 4 5 
+Numbers from 5 down to 0 in descending order:
+5 4 3 2 1 0 
+Enter a number: 6
+6 is even.
+Numbers from 1 to 6 in ascending order:
+1 2 3 4 5 6 
+Numbers from 6 down to 0 in descending order:
+6 5 4 3 2 1 0 
+
+
+PRGRM5
+#include <stdio.h>
+
+int main() {
+    int num1, num2;
+    char operator;
+
+    // Ask the user to enter two numbers and an operator
+    printf("Enter first number: ");
+    scanf("%d", &num1);
+    
+    printf("Enter an operator (+, -, *, /, %%): ");
+    scanf(" %c", &operator);  // Note the space before %c to capture any whitespace
+
+    printf("Enter second number: ");
+    scanf("%d", &num2);
+
+    // Switch-case for performing calculations based on operator
+    switch (operator) {
+        case '+':
+            printf("%d + %d = %d\n", num1, num2, num1 + num2);
+            break;
+        case '-':
+            printf("%d - %d = %d\n", num1, num2, num1 - num2);
+            break;
+        case '*':
+            printf("%d * %d = %d\n", num1, num2, num1 * num2);
+            break;
+        case '/':
+            // Check for division by zero
+            if (num2 == 0) {
+                printf("Error: Division by zero is not allowed!\n");
+            } else {
+                printf("%d / %d = %.2f\n", num1, num2, (float)num1 / num2);
+            }
+            break;
+        case '%':
+            // Check for modulus by zero
+            if (num2 == 0) {
+                printf("Error: Modulus by zero is not allowed!\n");
+            } else {
+                printf("%d %% %d = %d\n", num1, num2, num1 % num2);
+            }
+            break;
+        default:
+            printf("Error: Invalid operator!\n");
+            break;
+    }
+
+    return 0;
+}
+Enter first number: 12
+Enter an operator (+, -, *, /, %): +
+Enter second number: 5
+12 + 5 = 17
