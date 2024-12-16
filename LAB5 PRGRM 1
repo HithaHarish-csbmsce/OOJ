@@ -43,3 +43,13 @@ public class Main{
 		D.sleep();
 	}
 }
+
+OUTPUT:
+
+Carnivorous
+12 hours
+Carnivorous
+10 hours
+Herbivorous
+8 hours
+
