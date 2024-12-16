@@ -92,3 +92,25 @@ public class Student {
    
 }
 }
+ OUTPUT 
+Enter student name: Hitha Harish
+Enter student USN: 115
+Enter marks for subject 1: 90
+Enter credits for subject 1: 4
+Enter marks for subject 2: 89
+Enter credits for subject 2: 4
+Enter marks for subject 3: 98
+Enter credits for subject 3: 4
+Enter marks for subject 4: 86
+Enter credits for subject 4: 3
+Enter marks for subject 5: 87
+Enter credits for subject 5: 3
+Enter marks for subject 6: 90
+Enter credits for subject 6: 2
+Enter marks for subject 7: 97
+Enter credits for subject 7: 1
+Enter marks for subject 8: 94
+Enter credits for subject 8: 1
+Student Name: Hitha Harish
+USN: 115
+SGPA: 9.55
